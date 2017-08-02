@@ -27,6 +27,7 @@ const SwipeoutBtn = createReactClass({
     text: PropTypes.string,
     type: PropTypes.string,
     underlayColor: PropTypes.string,
+    textStyle: PropTypes.object
   },
 
   getDefaultProps: function() {
@@ -35,6 +36,7 @@ const SwipeoutBtn = createReactClass({
       color: null,
       component: null,
       underlayColor: null,
+      textStyle: null,
       height: 0,
       onPress: null,
       disabled: false,
@@ -81,7 +83,7 @@ const SwipeoutBtn = createReactClass({
         underlayColor={this.props.underlayColor}
         disabled={this.props.disabled}
         style={[styles.swipeoutBtnTouchable, styleSwipeoutBtn]}
-        textStyle={styleSwipeoutBtnText}>
+        textStyle={[styleSwipeoutBtnText, this.props.textStyle]}>
         {
           (btn.component ?
             <View style={styleSwipeoutBtnComponent}>{btn.component}</View>
@@ -430,6 +432,7 @@ const Swipeout = createReactClass({
         type={btn.type}
         underlayColor={btn.underlayColor}
         width={this.state.btnWidth}
+        textStyle={this.props.textStyle}
       />
     );
   }
